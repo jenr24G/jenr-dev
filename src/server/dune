@@ -1,0 +1,9 @@
+(executable
+ (name jenr_dev_server)
+ (libraries dream)
+ (preprocess (pps lwt_ppx)))
+
+(rule
+ (targets templates.ml)
+ (deps templates.eml.html)
+ (action (run dream_eml %{workspace_root}/src/server/%{deps})))
