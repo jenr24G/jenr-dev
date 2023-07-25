@@ -1,15 +1,13 @@
 { pkgs ? import <nixpkgs> {}}:
 
 pkgs.mkShell {
-  buildInputs = with pkgs; [
-    opam
+  nativeBuildInputs = with pkgs; [
+    opam nodePackages.tailwindcss
     pkg-config
     libev openssl
+  ] ++ lib.optionals stdenv.isDarwin
+  [
+    darwin.apple_sdk.frameworks.Security
     darwin.apple_sdk.frameworks.CoreServices
   ];
-
-  shellHook = ''
-    opam switch import ./switch.export
-    eval $(opam env)
-  '';
 }
