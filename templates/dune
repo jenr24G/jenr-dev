@@ -1,0 +1,7 @@
+(library
+    (name templates))
+
+(rule
+    (targets home.ml)
+    (deps (glob_files *.eml.html))
+    (action (run dream_eml %{deps})))

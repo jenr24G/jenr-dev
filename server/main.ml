@@ -6,15 +6,15 @@ let () =
 
     Dream.get "/"
       (fun _request ->
-        Templates.home
+        Templates.Home.layout
         |> Dream.html);
 
     Dream.get "/hello"
       (fun _request ->
-        Templates.hello
+        Templates.Home.hello
         |> Dream.html);
 
     Dream.get "/static/**"
-        (Dream.static "./static")
+        (Dream.static "./static");
 
   ] 
