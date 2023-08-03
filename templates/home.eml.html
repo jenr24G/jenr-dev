@@ -7,17 +7,34 @@ let layout =
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>JenR.dev</title>
         <script src="static/htmx.min.js"></script>
+        <link href="static/home.css" rel="stylesheet">
     </head>
-    <body>
+    <body class="bg-purple-800">
         Hello OCaml World!
         <button hx-get="/hello" hx-trigger="click" hx-swap="outerHTML">
             Hello
         </button>
+        <div hx-trigger="load" hx-get="/slideshow/test_slideshow/0" hx-swap="outerHTML"></div>
     </body>
     </html>
 
 (* template for replacement of the hello button on click at "/hello" *)
 let hello =
-    <div>
+    <div class="bg-purple-500">
         <p>You Clicked the Hello Button!</p>
+    </div>
+
+(* template for creating a slideshow element *)
+let slideshow (slideshow_id : string) (slide_num : int) (img_type : string) (num_imgs : int) =
+    <div id="<%s slideshow_id %>">
+        <img 
+            src="static/img/<%s slideshow_id %>/<%i slide_num %><%s img_type %>" 
+            alt="slideshow image <%i slide_num %>"
+        >
+        <button hx-get="/slideshow/<%s slideshow_id %>/<%i (abs (slide_num + 1)) mod num_imgs %>" hx-trigger="click" hx-swap="outerHTML" hx-target="#<%s slideshow_id %>">
+            next
+        </button>
+        <button hx-get="/slideshow/<%s slideshow_id %>/<%i (abs (slide_num - 1)) mod num_imgs %>" hx-trigger="click" hx-swap="outerHTML" hx-target="#<%s slideshow_id %>">
+            prev
+        </button>
     </div>

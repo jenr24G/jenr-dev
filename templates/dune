@@ -1,5 +1,6 @@
 (library
-    (name templates))
+    (name templates)
+    (libraries dream))
 
 (rule
     (targets home.ml)
