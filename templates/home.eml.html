@@ -31,10 +31,10 @@ let slideshow (slideshow_id : string) (slide_num : int) (img_type : string) (num
             src="static/img/<%s slideshow_id %>/<%i slide_num %><%s img_type %>" 
             alt="slideshow image <%i slide_num %>"
         >
-        <button hx-get="/slideshow/<%s slideshow_id %>/<%i (abs (slide_num + 1)) mod num_imgs %>" hx-trigger="click" hx-swap="outerHTML" hx-target="#<%s slideshow_id %>">
-            next
-        </button>
         <button hx-get="/slideshow/<%s slideshow_id %>/<%i (abs (slide_num - 1)) mod num_imgs %>" hx-trigger="click" hx-swap="outerHTML" hx-target="#<%s slideshow_id %>">
             prev
+        </button>
+        <button hx-get="/slideshow/<%s slideshow_id %>/<%i (abs (slide_num + 1)) mod num_imgs %>" hx-trigger="click" hx-swap="outerHTML" hx-target="#<%s slideshow_id %>">
+            next
         </button>
     </div>

@@ -1,4 +1,4 @@
 (executable
  (name main)
- (libraries dream templates)
+ (libraries dream templates widgets)
  (preprocess (pps lwt_ppx)))

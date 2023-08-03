@@ -1,0 +1,14 @@
+(* template for creating a slideshow element *)
+let apply (slideshow_id : string) (slide_num : int) (image_filename : string) =
+    <div id="<%s slideshow_id %>">
+        <img 
+            src="static/img/<%s slideshow_id %>/<%s image_filename %>" 
+            alt="slideshow image <%i slide_num %>"
+        >
+        <button hx-get="/slideshow/<%s slideshow_id %>/<%i slide_num - 1 %>" hx-trigger="click" hx-swap="outerHTML" hx-target="#<%s slideshow_id %>">
+            prev
+        </button>
+        <button hx-get="/slideshow/<%s slideshow_id %>/<%i slide_num + 1 %>" hx-trigger="click" hx-swap="outerHTML" hx-target="#<%s slideshow_id %>">
+            next
+        </button>
+    </div>
