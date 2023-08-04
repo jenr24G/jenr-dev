@@ -1,3 +1,8 @@
 (library
  (name widgets)
- (libraries base core dream slideshow))
+ (libraries base core dream image_lib))
+
+(rule
+ (target templates.ml)
+ (deps templates.eml.html)
+ (action (run dream_eml %{deps})))

@@ -1,5 +1,5 @@
 (* template for creating a slideshow element *)
-let apply (slideshow_id : string) (slide_num : int) (image_filename : string) =
+let slideshow slideshow_id slide_num image_filename =
     <div id="<%s slideshow_id %>">
         <img 
             src="static/img/<%s slideshow_id %>/<%s image_filename %>" 

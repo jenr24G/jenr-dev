@@ -1,8 +1,0 @@
-(library
- (name slideshow)
- (libraries base core dream))
-
-(rule
- (target template.ml)
- (deps template.eml.html)
- (action (run dream_eml %{deps})))
