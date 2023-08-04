@@ -19,8 +19,8 @@ module Slideshow = Widget.Make(struct
   let render static_props request_props = 
     let slideshow_images = 
       Image_lib.images_of_dir static_props ("static/img/" ^ request_props.slideshow_id) in
-    let image_filename = List.nth slideshow_images request_props.slide_num in
     let slide_num = request_props.slide_num |>
       normalize_slide_num (List.length slideshow_images) in
+    let image_filename = List.nth slideshow_images slide_num in
     Templates.slideshow request_props.slideshow_id slide_num image_filename
 end)
