@@ -1,3 +1,6 @@
+let normalize_slide_num (num_images : int) (slide_num_raw : int) : int =
+  if slide_num_raw < 0 then num_images - 1 else slide_num_raw mod num_images
+
 module Slideshow = Widget.Make(struct
   type static_props = Image_lib.image_t
 
@@ -12,9 +15,6 @@ module Slideshow = Widget.Make(struct
     { slideshow_id = Dream.param request "slideshow_id"
     ; slide_num    = Dream.param request "slide_num" |> int_of_string
     }
-
-  let normalize_slide_num (num_images : int) (slide_num_raw : int) : int =
-    if slide_num_raw < 0 then num_images - 1 else slide_num_raw mod num_images
 
   let render static_props request_props = 
     let slideshow_images = 
